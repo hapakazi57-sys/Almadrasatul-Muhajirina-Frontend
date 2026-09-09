@@ -1,0 +1,232 @@
+/* ===========================================================
+   Marks Entry — Layout
+   =========================================================== */
+.marks-layout {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 24px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  
+}
+
+/* -------- Shared card base -------- */
+.marks-form-card,
+.marks-history-card {
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(21, 71, 52, 0.06);
+  transition: box-shadow 0.2s ease;
+}
+
+.marks-form-card:hover,
+.marks-history-card:hover {
+  box-shadow: 0 10px 28px rgba(21, 71, 52, 0.10);
+}
+
+/* Accent bar ya gradient juu ya kila card */
+.marks-form-card::before,
+.marks-history-card::before {
+  content: '';
+  display: block;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-gold) 100%);
+}
+
+  /* -------- Card header + divider ya kweli -------- */
+  .marks-form-card > h3,
+  .marks-history-card > h3 {
+    margin: 0;
+    padding: 20px 26px 16px;
+    border-bottom: 1px solid var(--color-border);
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+
+/* -------- Form body -------- */
+.marks-form {
+  padding: 22px 26px 26px;
+}
+
+.marks-form .field { margin-bottom: 18px; }
+
+.marks-form .field label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: 4px;
+}
+
+/* -------- Select: mshale wa custom unaolingana na theme -------- */
+.marks-form select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: #fff;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23154734'%3E%3Cpath fill-rule='evenodd' d='M5.23 7.21a.75.75 0 011.06.02L10 11.293l3.71-4.06a.75.75 0 111.08 1.04l-4.25 4.65a.75.75 0 01-1.08 0l-4.25-4.65a.75.75 0 01.02-1.06z' clip-rule='evenodd'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 16px;
+  padding-right: 40px;
+  cursor: pointer;
+}
+
+.marks-form select:hover,
+.marks-form input:hover {
+  border-color: var(--color-primary-light);
+}
+
+/* -------- Score input: ionekane "muhimu" -------- */
+.marks-score-input {
+  font-size: 1.35rem;
+  font-weight: 700;
+  font-family: var(--font-display);
+  text-align: center;
+  color: var(--color-primary-dark);
+  padding: 12px;
+}
+
+.marks-score-input:focus {
+  border-color: var(--color-gold) !important;
+  box-shadow: 0 0 0 4px rgba(201, 162, 39, 0.16) !important;
+}
+
+/* -------- Save button -------- */
+.marks-submit-btn {
+  width: 100%;
+  margin-top: 8px;
+  padding: 13px;
+  font-size: 1rem;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  box-shadow: 0 4px 14px rgba(21, 71, 52, 0.22);
+  border: none;
+  transition: transform 0.12s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.marks-submit-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(21, 71, 52, 0.28);
+}
+
+.marks-submit-btn:active:not(:disabled) { transform: translateY(0); }
+
+.marks-submit-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/* ===========================================================
+   History card (upande wa kulia)
+   =========================================================== */
+.marks-history-body {
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* -------- Empty state: icon ya brand badala ya emoji -------- */
+.marks-history-empty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 50px 30px;
+  color: var(--color-text-muted);
+}
+
+.marks-history-empty-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(21,71,52,0.08) 0%, rgba(201,162,39,0.14) 100%);
+  margin-bottom: 18px;
+}
+
+.marks-history-empty-icon svg {
+  width: 26px;
+  height: 26px;
+  color: var(--color-primary);
+}
+
+.marks-history-empty p {
+  font-style: italic;
+  font-size: 0.92rem;
+  max-width: 250px;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* -------- Table -------- */
+.marks-history-table {
+  font-size: 0.92rem;
+}
+
+.marks-history-table thead th {
+  padding: 12px 26px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  border-bottom: 2px solid var(--color-border);
+  background: #FBF9F2;
+}
+
+.marks-history-table tbody td {
+  padding: 14px 26px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.marks-history-table tbody tr {
+  transition: background-color 0.15s ease;
+}
+
+.marks-history-table tbody tr:hover {
+  background: rgba(201, 162, 39, 0.06);
+}
+
+.marks-history-table tbody tr:last-child td { border-bottom: none; }
+
+.marks-score-cell {
+  font-weight: 700;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: var(--color-primary-dark);
+}
+
+/* ===========================================================
+   Responsive
+   =========================================================== */
+@media (max-width: 1080px) {
+  .marks-layout { grid-template-columns: 340px 1fr; gap: 18px; }
+}
+
+@media (max-width: 860px) {
+  .marks-layout { grid-template-columns: 1fr; }
+  .marks-form-card { position: static; }
+}
+
+@media (max-width: 480px) {
+  .marks-form,
+  .marks-form-card > h3,
+  .marks-history-card > h3 { padding-left: 18px; padding-right: 18px; }
+  .marks-history-table thead th,
+  .marks-history-table tbody td { padding: 10px 14px; }
+  .marks-score-input { font-size: 1.15rem; }
+  .marks-history-student-tag { margin-left: 0; }
+}

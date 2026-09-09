@@ -1,0 +1,355 @@
+/* ============================================
+   STUDENT LIST - Premium Table Experience
+   ============================================ */
+
+:root {
+  --amm-green: #154734;
+  --amm-green-light: #1e6a4f;
+  --amm-accent: #0ea472;
+  --amm-gold: #FCD34D;
+  --amm-gold-deep: #d4a017;
+  --amm-red: #B3261E;
+}
+
+/* ============================================
+   TOP TOOLBAR (Filters + Search + Add button)
+   ============================================ */
+
+.section-title-row {
+  background: linear-gradient(135deg, #ffffff 0%, #f6faf8 100%);
+  border-radius: 16px;
+  padding: 18px 22px;
+  border: 1px solid rgba(21, 71, 52, 0.08);
+  box-shadow: 0 2px 12px rgba(21, 71, 52, 0.04);
+}
+
+.students-filters {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.students-search {
+  padding: 11px 18px 11px 42px;
+  border: 1.5px solid #e2e8e5;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  min-width: 280px;
+  background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%230ea472' stroke-width='2.2'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m21 21-4.3-4.3'/%3E%3C/svg%3E") no-repeat 15px center;
+  background-size: 16px;
+  transition: all 0.25s ease;
+  font-weight: 500;
+}
+
+.students-search:hover {
+  border-color: rgba(14, 164, 114, 0.4);
+}
+
+.students-search:focus {
+  outline: none;
+  border-color: var(--amm-accent);
+  background-color: #fff;
+  box-shadow: 0 0 0 4px rgba(14, 164, 114, 0.12);
+}
+
+.students-filters select {
+  padding: 11px 40px 11px 18px;
+  border: 1.5px solid #e2e8e5;
+  border-radius: 12px;
+  font-size: 0.87rem;
+  font-weight: 600;
+  background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23154734' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 16px center;
+  appearance: none;
+  cursor: pointer;
+  color: var(--amm-green);
+  transition: all 0.25s ease;
+}
+
+.students-filters select:hover {
+  border-color: rgba(21, 71, 52, 0.3);
+}
+
+.students-filters select:focus {
+  outline: none;
+  border-color: var(--amm-accent);
+  box-shadow: 0 0 0 4px rgba(14, 164, 114, 0.12);
+}
+
+/* ============================================
+   TABLE CARD WRAPPER
+   ============================================ */
+
+.card:has(.amm-table) {
+  padding: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(21, 71, 52, 0.08);
+}
+
+/* -------- Table -------- */
+.amm-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.9rem;
+}
+
+.amm-table thead th {
+  text-align: left;
+  padding: 16px 20px;
+  background: linear-gradient(135deg, var(--amm-green) 0%, var(--amm-green-light) 100%);
+  color: rgba(255, 255, 255, 0.92);
+  font-weight: 700;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.amm-table tbody tr {
+  transition: all 0.2s ease;
+  animation: rowFadeIn 0.35s ease-out backwards;
+}
+
+.amm-table tbody tr:nth-child(1) { animation-delay: 0.02s; }
+.amm-table tbody tr:nth-child(2) { animation-delay: 0.05s; }
+.amm-table tbody tr:nth-child(3) { animation-delay: 0.08s; }
+.amm-table tbody tr:nth-child(4) { animation-delay: 0.11s; }
+.amm-table tbody tr:nth-child(5) { animation-delay: 0.14s; }
+
+.amm-table tbody tr:nth-child(even) {
+  background: #fafcfb;
+}
+
+.amm-table tbody tr:hover {
+  background: rgba(14, 164, 114, 0.06);
+  transform: scale(1.002);
+}
+
+.amm-table tbody tr:not(:last-child) td {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.amm-table td {
+  padding: 14px 20px;
+  color: #1F2937;
+  vertical-align: middle;
+}
+
+/* -------- Student number: pill style -------- */
+.amm-table td:first-child {
+  font-weight: 700;
+  color: var(--amm-green);
+}
+
+.amm-table td:first-child::before {
+  content: '';
+}
+
+/* -------- Name column with avatar -------- */
+.amm-table td:nth-child(2) {
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.amm-table td:nth-child(2)::before {
+  content: attr(data-initials);
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--amm-green) 0%, var(--amm-accent) 100%);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.empty-row {
+  text-align: center;
+  padding: 64px 20px !important;
+  color: #9ca3af;
+  font-style: italic;
+  position: relative;
+}
+
+.empty-row::before {
+  content: '🔍';
+  display: block;
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+  opacity: 0.5;
+  font-style: normal;
+}
+
+/* -------- Badges -------- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.badge::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  animation: pulse 2s infinite;
+}
+
+.badge-examined {
+  background: linear-gradient(135deg, rgba(21, 71, 52, 0.12) 0%, rgba(14, 164, 114, 0.12) 100%);
+  color: var(--amm-green);
+}
+.badge-examined::before {
+  background: var(--amm-accent);
+}
+
+.badge-registered {
+  background: linear-gradient(135deg, rgba(252, 211, 77, 0.22) 0%, rgba(212, 160, 23, 0.15) 100%);
+  color: #92700a;
+}
+.badge-registered::before {
+  background: var(--amm-gold-deep);
+}
+
+/* -------- Table Actions -------- */
+.table-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.table-action-btn {
+  padding: 7px 15px !important;
+  font-size: 0.78rem !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+}
+
+.btn-danger {
+  background: #fff;
+  color: var(--amm-red);
+  border: 1.5px solid rgba(179, 38, 30, 0.25);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-danger:hover {
+  background: var(--amm-red);
+  color: #fff;
+  border-color: var(--amm-red);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(179, 38, 30, 0.3);
+}
+
+.btn-danger:active {
+  transform: translateY(0);
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes rowFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .amm-table td:nth-child(2)::before {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    font-size: 0.65rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-title-row {
+    padding: 14px 16px;
+  }
+
+  .students-filters {
+    width: 100%;
+  }
+
+  .students-search {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .amm-table {
+    font-size: 0.82rem;
+  }
+
+  .amm-table thead th,
+  .amm-table td {
+    padding: 11px 14px;
+  }
+
+  .amm-table td:nth-child(2)::before {
+    width: 26px;
+    height: 26px;
+    min-width: 26px;
+    font-size: 0.6rem;
+  }
+
+  .table-actions {
+    flex-direction: column;
+    gap: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .badge {
+    padding: 5px 11px;
+    font-size: 0.68rem;
+  }
+
+  .amm-table thead th {
+    font-size: 0.62rem;
+    padding: 9px 10px;
+  }
+
+  .amm-table td {
+    padding: 9px 10px;
+    font-size: 0.78rem;
+  }
+
+  .amm-table td:nth-child(2)::before {
+    display: none;
+  }
+}

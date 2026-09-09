@@ -1,0 +1,213 @@
+/* ===== Results.css — scoped kabisa kwa Results page (res-*) ===== */
+/* Class zote hapa zina prefix "res-" ili zisigongane na CSS ya global
+   (App.css n.k.) — hii ndiyo iliyokuwa inasababisha duplicate ya round. */
+
+.res-page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.res-section-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.res-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.res-field label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-muted, #5b6470);
+}
+
+.res-field select {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1.5px solid var(--color-border, #d9dee3);
+  background: #fff;
+  font-size: 14px;
+  outline: none;
+  min-width: 220px;
+}
+
+.res-field select:focus {
+  border-color: var(--color-primary, #154734);
+}
+
+/* ---- Card wrapper ---- */
+.res-card {
+  background: #fff;
+  border-radius: 14px;
+  border: 1px solid var(--color-border, #e6e9ec);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  padding: 4px;
+}
+
+/* ---- Table ---- */
+.res-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.res-table thead tr {
+  background: var(--color-primary, #154734);
+}
+
+.res-table thead th {
+  color: #fff;
+  text-align: left;
+  padding: 14px 18px;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.res-table thead th:first-child {
+  border-top-left-radius: 10px;
+}
+
+.res-table thead th:last-child {
+  border-top-right-radius: 10px;
+}
+
+.res-table tbody td {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--color-border, #eef1f3);
+  vertical-align: middle;
+  color: var(--color-text, #1f2a24);
+}
+
+.res-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.res-table tbody tr:hover {
+  background: rgba(21, 71, 52, 0.03);
+}
+
+.res-empty-row {
+  text-align: center;
+  padding: 24px !important;
+  color: var(--color-text-muted, #8a939c);
+  font-style: italic;
+}
+
+/* ---- Top rank row highlight ---- */
+.res-top-rank-row { background: rgba(201, 162, 39, 0.06); }
+
+/* ---- Rank pill (column ya Rank) ---- */
+.res-rank-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-weight: 700;
+  background: var(--color-bg, #f4f6f7);
+  border: 1.5px solid var(--color-border, #d9dee3);
+  color: var(--color-text, #1f2a24);
+}
+
+.res-rank-gold { background: var(--color-gold, #C9A227); color: #fff; border-color: var(--color-gold, #C9A227); }
+.res-rank-silver { background: #C7CDD6; color: #fff; border-color: #C7CDD6; }
+.res-rank-bronze { background: #C08552; color: #fff; border-color: #C08552; }
+
+/* ---- Namba column: avatar + number (mviringo MMOJA tu) ---- */
+.res-number-cell {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.res-number-cell::before,
+.res-number-cell::after {
+  content: none !important;
+  display: none !important;
+}
+
+.res-number-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  min-width: 30px;
+  border-radius: 50%;
+  background: var(--color-primary, #154734);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.res-number-avatar::before,
+.res-number-avatar::after {
+  content: none !important;
+  display: none !important;
+}
+
+.res-number-value {
+  font-weight: 600;
+  color: var(--color-text, #1f2a24);
+}
+
+.res-number-value::before,
+.res-number-value::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* ---- Grade badge ---- */
+.res-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.res-badge-grade-A { background: #DFF3E4; color: #1B8A3D; }
+.res-badge-grade-B { background: #E6F0FA; color: #1F6FCB; }
+.res-badge-grade-C { background: #FBEFD8; color: #B8860B; }
+.res-badge-grade-D { background: #FCE7D8; color: #C2691D; }
+.res-badge-grade-E,
+.res-badge-grade-F { background: #FAE1E1; color: #C0392B; }
+
+/* ---- Responsive ---- */
+@media (max-width: 640px) {
+  .res-table thead { display: none; }
+
+  .res-table, .res-table tbody, .res-table tr, .res-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .res-table tbody tr {
+    margin-bottom: 12px;
+    border: 1px solid var(--color-border, #eef1f3);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .res-table tbody td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 14px;
+  }
+}

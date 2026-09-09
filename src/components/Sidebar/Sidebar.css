@@ -1,0 +1,229 @@
+/* ============================================
+   SIDEBAR - Advanced & Responsive
+   ============================================ */
+
+.sidebar {
+  width: var(--sidebar-width, 280px);
+  min-width: var(--sidebar-width, 280px);
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, #123d2d 0%, #0d2e21 100%);
+  color: #ffffff;
+  box-shadow: var(--shadow-lg, 0 8px 40px rgba(0, 0, 0, 0.12));
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+/* Mstari mwembamba wa dhahabu juu ya sidebar - mguso wa "premium" */
+.sidebar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #FCD34D, #f4d58d, #FCD34D);
+  opacity: 0.9;
+}
+
+.sidebar::-webkit-scrollbar {
+  width: 5px;
+}
+.sidebar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+/* -------- Brand / Logo Section -------- */
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 26px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+}
+
+.sidebar-logo {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 4px;
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+.sidebar-brand:hover .sidebar-logo {
+  transform: scale(1.05) rotate(-2deg);
+}
+
+.sidebar-brand-name {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+  color: #FCD34D;
+  margin: 0;
+}
+
+/* -------- Navigation Groups (hiari - kwa menu zenye makundi) -------- */
+.sidebar-nav-group-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+  padding: 16px 16px 6px;
+  margin: 0;
+}
+
+/* -------- Navigation Links -------- */
+.sidebar-nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 18px 14px;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  color: rgba(255, 255, 255, 0.72);
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 500;
+  position: relative;
+  transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+  white-space: nowrap;
+}
+
+.sidebar-link-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  transition: color 0.25s ease;
+}
+
+.sidebar-link-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.sidebar-link-text {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Badge / hesabu ndogo, mfano idadi ya taarifa mpya */
+.sidebar-link-badge {
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: #FCD34D;
+  color: #123d2d;
+  font-size: 0.7rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.sidebar-link:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  transform: translateX(3px);
+}
+
+.sidebar-link:focus-visible {
+  outline: 2px solid #FCD34D;
+  outline-offset: -2px;
+}
+
+.sidebar-link.active {
+  background: rgba(252, 211, 77, 0.14);
+  color: #FCD34D;
+  font-weight: 600;
+  box-shadow: inset 0 0 0 1px rgba(252, 211, 77, 0.18);
+}
+
+.sidebar-link.active .sidebar-link-icon {
+  color: #FCD34D;
+}
+
+.sidebar-link.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 60%;
+  background: #FCD34D;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 0 10px rgba(252, 211, 77, 0.6);
+}
+
+/* -------- Footer -------- */
+.sidebar-footer {
+  padding: 16px 20px;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.4);
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin: 0;
+}
+
+/* ============================================
+   RESPONSIVE - Mobile Sidebar (Drawer style)
+   ============================================ */
+
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+    box-shadow: none;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+    box-shadow: var(--shadow-lg, 0 8px 40px rgba(0, 0, 0, 0.25));
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    width: 78%;
+    min-width: 240px;
+  }
+}
+
+/* Reduced motion - heshimu mipangilio ya mtumiaji */
+@media (prefers-reduced-motion: reduce) {
+  .sidebar,
+  .sidebar-link,
+  .sidebar-logo {
+    transition: none;
+  }
+}

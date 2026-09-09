@@ -1,0 +1,300 @@
+/* ============================================
+   COURSES MODULE - Advanced & Attractive
+   ============================================ */
+
+:root {
+  --amm-green: #154734;
+  --amm-green-light: #1e6a4f;
+  --amm-accent: #0ea472;
+  --amm-gold: #FCD34D;
+  --amm-gold-deep: #c9a227;
+  --amm-red: #B3261E;
+}
+
+.courses-layout {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+/* ============================================
+   FORM CARD (Left side - Add Course)
+   ============================================ */
+
+.courses-form-card {
+  padding: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(21, 71, 52, 0.08);
+  box-shadow: 0 8px 30px rgba(21, 71, 52, 0.08);
+  position: sticky;
+  top: 20px;
+}
+
+.courses-form-card::before {
+  content: '';
+  display: block;
+  height: 5px;
+  background: linear-gradient(90deg, var(--amm-green) 0%, var(--amm-accent) 50%, var(--amm-gold) 100%);
+}
+
+.courses-form-card h3 {
+  margin: 26px 28px 6px;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--amm-green);
+}
+
+.courses-form-card .form-hint {
+  margin: 0 28px 22px;
+  color: var(--color-text-muted, #6B7280);
+  font-size: 0.85rem;
+  padding-bottom: 18px;
+  border-bottom: 1px dashed rgba(21, 71, 52, 0.2);
+}
+
+.courses-form-card form {
+  padding: 0 28px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.courses-form-card .field label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--amm-green);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.courses-form-card .field input,
+.courses-form-card .field select,
+.courses-form-card .field textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid #dfe6e2;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  background: #fbfdfc;
+  transition: all 0.25s ease;
+}
+
+.courses-form-card .field input:focus,
+.courses-form-card .field select:focus,
+.courses-form-card .field textarea:focus {
+  outline: none;
+  border-color: var(--amm-accent);
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(14, 164, 114, 0.12);
+}
+
+.courses-form-card .btn-primary {
+  background: linear-gradient(135deg, var(--amm-green) 0%, var(--amm-accent) 100%);
+  box-shadow: 0 6px 16px rgba(14, 164, 114, 0.28);
+  font-weight: 700;
+  padding: 13px 24px;
+  border-radius: 10px;
+}
+
+.courses-form-card .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(14, 164, 114, 0.38);
+}
+
+/* ============================================
+   LIST CARD (Right side - Courses list)
+   ============================================ */
+
+.courses-list-card {
+  padding: 26px 28px;
+  border-radius: 16px;
+  border: 1px solid rgba(21, 71, 52, 0.08);
+  box-shadow: 0 4px 20px rgba(21, 71, 52, 0.05);
+}
+
+.courses-list-card h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-primary-dark, #1F2937);
+  margin: 0 0 20px;
+}
+
+.courses-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* -------- Course Chip -------- */
+.course-chip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border: 1.5px solid #e7ece9;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #ffffff 0%, #fafcfb 100%);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: chipFadeIn 0.35s ease-out backwards;
+}
+
+.courses-grid .course-chip:nth-child(1) { animation-delay: 0.02s; }
+.courses-grid .course-chip:nth-child(2) { animation-delay: 0.05s; }
+.courses-grid .course-chip:nth-child(3) { animation-delay: 0.08s; }
+.courses-grid .course-chip:nth-child(4) { animation-delay: 0.11s; }
+.courses-grid .course-chip:nth-child(5) { animation-delay: 0.14s; }
+
+/* Colorful left accent bar */
+.course-chip::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, var(--amm-green) 0%, var(--amm-accent) 100%);
+  transform: scaleY(0);
+  transform-origin: center;
+  transition: transform 0.25s ease;
+}
+
+.course-chip:hover {
+  border-color: rgba(14, 164, 114, 0.35);
+  background: linear-gradient(135deg, #ffffff 0%, #f2f9f6 100%);
+  transform: translateX(4px);
+  box-shadow: 0 6px 18px rgba(21, 71, 52, 0.1);
+}
+
+.course-chip:hover::before {
+  transform: scaleY(1);
+}
+
+/* -------- Course Code Badge -------- */
+.course-code {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(252, 211, 77, 0.25) 0%, rgba(201, 162, 39, 0.15) 100%);
+  color: var(--amm-gold-deep);
+  font-weight: 800;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  width: fit-content;
+}
+
+.course-code::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--amm-gold-deep);
+}
+
+.course-name {
+  margin: 8px 0 0 0;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--color-primary-dark, #1F2937);
+}
+
+/* -------- Chip actions (if delete/edit buttons exist) -------- */
+.course-chip-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.course-chip-actions .btn {
+  padding: 7px 14px;
+  font-size: 0.78rem;
+  border-radius: 8px;
+}
+
+/* -------- Empty state -------- */
+.courses-empty {
+  text-align: center;
+  padding: 48px 20px;
+  color: #9ca3af;
+  font-style: italic;
+}
+
+.courses-empty::before {
+  content: '📚';
+  display: block;
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+  opacity: 0.5;
+  font-style: normal;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes chipFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 860px) {
+  .courses-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .courses-form-card {
+    position: static;
+  }
+}
+
+@media (max-width: 480px) {
+  .courses-form-card h3,
+  .courses-form-card .form-hint,
+  .courses-form-card form {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .courses-form-card h3 {
+    margin-top: 20px;
+    font-size: 1.05rem;
+  }
+
+  .courses-list-card {
+    padding: 20px;
+  }
+
+  .course-chip {
+    padding: 13px 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .course-chip-actions {
+    width: 100%;
+  }
+
+  .course-chip-actions .btn {
+    flex: 1;
+  }
+}

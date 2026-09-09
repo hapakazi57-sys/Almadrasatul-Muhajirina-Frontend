@@ -1,0 +1,244 @@
+/* ============================================
+   REGISTER / EDIT STUDENT FORM - Attractive
+   ============================================ */
+
+:root {
+  --amm-green: #154734;
+  --amm-green-light: #1e6a4f;
+  --amm-green-soft: #e9f3ee;
+  --amm-gold: #FCD34D;
+  --amm-gold-deep: #d4a017;
+  --amm-accent: #0ea472;
+}
+
+/* -------- Card Container -------- */
+.students-form-card {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 18px;
+  box-shadow: 0 10px 40px rgba(21, 71, 52, 0.1);
+  animation: slideUp 0.4s ease-out;
+  border: 1px solid rgba(21, 71, 52, 0.08);
+}
+
+/* -------- Colorful Header Band -------- */
+.students-form-card::before {
+  content: '';
+  display: block;
+  height: 6px;
+  background: linear-gradient(90deg, var(--amm-green) 0%, var(--amm-accent) 50%, var(--amm-gold) 100%);
+}
+
+.students-form-card h3 {
+  font-family: var(--font-display, 'Inter', sans-serif);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--amm-green);
+  margin: 32px 40px 6px;
+  letter-spacing: -0.01em;
+}
+
+.form-hint {
+  color: var(--color-text-muted, #6B7280);
+  font-size: 0.9rem;
+  margin: 0 40px 28px;
+  padding-bottom: 24px;
+  border-bottom: 1px dashed rgba(21, 71, 52, 0.2);
+}
+
+/* -------- Form Grid -------- */
+.students-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px 24px;
+  padding: 0 40px 40px;
+  background: linear-gradient(180deg, #ffffff 0%, var(--amm-green-soft) 200%);
+}
+
+.students-form-full {
+  grid-column: 1 / -1;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--amm-green);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.field input,
+.field select,
+.field textarea {
+  padding: 13px 16px;
+  border: 1.5px solid #dfe6e2;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: #1F2937;
+  background: #fbfdfc;
+  transition: all 0.25s ease;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: #a3a9b3;
+}
+
+.field input:hover,
+.field select:hover,
+.field textarea:hover {
+  border-color: rgba(14, 164, 114, 0.4);
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--amm-accent);
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(14, 164, 114, 0.14);
+}
+
+.field select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23154734' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 90px;
+  line-height: 1.5;
+}
+
+/* -------- Submit Button Area -------- */
+.students-form-full.page-actions {
+  margin-top: 6px;
+  padding-top: 26px;
+  border-top: 1px dashed rgba(21, 71, 52, 0.2);
+  justify-content: flex-end;
+}
+
+.students-form-full.page-actions .btn-primary {
+  min-width: 220px;
+  padding: 14px 30px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  background: linear-gradient(135deg, var(--amm-green) 0%, var(--amm-accent) 100%);
+  box-shadow: 0 6px 18px rgba(14, 164, 114, 0.3);
+  border-radius: 12px;
+}
+
+.students-form-full.page-actions .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(14, 164, 114, 0.4);
+}
+
+.students-form-full.page-actions .btn-primary:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none;
+}
+
+/* -------- Base button styles (kama hazipo global) -------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 22px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary {
+  color: #fff;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .students-form-card h3,
+  .form-hint,
+  .students-form-grid {
+    margin-left: 32px;
+    margin-right: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .students-form-card h3 {
+    margin: 24px 22px 6px;
+    font-size: 1.3rem;
+  }
+
+  .form-hint {
+    margin: 0 22px 22px;
+    font-size: 0.82rem;
+    padding-bottom: 18px;
+  }
+
+  .students-form-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 0 22px 32px;
+  }
+
+  .students-form-full.page-actions {
+    justify-content: stretch;
+  }
+
+  .students-form-full.page-actions .btn-primary {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .students-form-card {
+    border-radius: 14px;
+  }
+
+  .field input,
+  .field select,
+  .field textarea {
+    padding: 11px 14px;
+    font-size: 0.88rem;
+  }
+}
