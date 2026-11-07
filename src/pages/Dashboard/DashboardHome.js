@@ -163,7 +163,7 @@ export function DashboardHome() {
             <span className="stat-card-trend">Pending</span>
           </div>
           <p className="stat-card-value">{stats.registeredOnly}</p>
-          <p className="stat-card-label">Registered Tuu (Hawajafanya Mtihani)</p>
+          <p className="stat-card-label">Registered (Hawajafanya Mtihani)</p>
         </div>
       </div>
 

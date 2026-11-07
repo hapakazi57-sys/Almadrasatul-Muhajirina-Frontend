@@ -64,7 +64,7 @@ export default function StudentList() {
           />
           <select value={filter} onChange={(e) => setFilter(e.target.value)}>
             <option value="ALL">Wote</option>
-            <option value="REGISTERED">Registered Tuu</option>
+            <option value="REGISTERED">Registered</option>
             <option value="EXAMINED">Waliofanya Mtihani</option>
           </select>
         </div>
@@ -99,7 +99,7 @@ export default function StudentList() {
         <td>{s.registrationDate}</td>
         <td>
           <span className={`badge ${s.status === 'EXAMINED' ? 'badge-examined' : 'badge-registered'}`}>
-            {s.status === 'EXAMINED' ? 'Amefanya Mtihani' : 'Registered Tuu'}
+            {s.status === 'EXAMINED' ? 'Amefanya Mtihani' : 'Registered'}
           </span>
         </td>
         <td>

@@ -1,344 +1,415 @@
-* {
-  box-sizing: border-box;
-}
-
-/* ===== Screen wrapper (nyeupe kama maziwa) ===== */
-.login-screen {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 32px 16px;
-  background: #f7f6f2;
-  font-family: 'Segoe UI', Tahoma, sans-serif;
-  overflow: hidden;
-}
-
-/* ===== Animated lines: kurudi na kuenda ===== */
-.login-bg-lines {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background-image: repeating-linear-gradient(
-    120deg,
-    rgba(21, 71, 52, 0.06) 0px,
-    rgba(21, 71, 52, 0.06) 1px,
-    transparent 1px,
-    transparent 46px
-  );
-  background-size: 300% 300%;
-  animation: driftLines 16s ease-in-out infinite alternate;
-}
-
-@keyframes driftLines {
-  0% {
-    background-position: 0% 0%;
+  * {
+    box-sizing: border-box;
   }
-  100% {
-    background-position: 100% 60%;
+
+  /* ===== Palette (badilisha rangi hapa tu) ===== */
+  :root {
+    --green: #0f5132; /* kijani cha msingi */
+    --green-dark: #06251a; /* kijani cheusi (mandharinyuma) */
+    --gold: #c9a227; /* dhahabu (kitufe na kichwa tu) */
+    --gold-hover: #b38f1f;
+    --ivory: #f4f1e6; /* nyeupe ya pembe (maandishi) */
+    --ivory-soft: rgba(244, 241, 230, 0.72); /* maandishi madogo */
+    --line: rgba(244, 241, 230, 0.14); /* mistari myembamba */
   }
-}
 
-@media (max-width: 600px) {
-  .login-bg-lines {
-    background-size: 400% 400%;
-  }
-}
-
-/* ===== Centered card content (brand + form) ===== */
-.login-content {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  max-width: 960px;
-  min-height: 560px;
-  display: flex;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.18);
-}
-
-/* ===== LEFT: Brand panel ===== */
-.login-brand-panel {
-  flex: 1;
-  position: relative;
-  background: linear-gradient(160deg, #154734 0%, #0d2f22 100%);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 40px 48px;
-  color: #fff;
-  overflow: hidden;
-}
-
-.login-brand-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(13, 47, 34, 0.75) 0%, rgba(21, 71, 52, 0.9) 100%);
-}
-
-.login-brand-content {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 100%;
-  padding: 8px 0 24px;
-}
-
-.login-brand-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.login-logo {
-  width: 35%;
-  height: 20%px;
-  object-fit: contain;
-  border-radius: 45%;
-}
-
-.login-uni-name {
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-}
-
-.login-brand-bottom {
-  margin-top: auto;
-  max-width: 460px;
-}
-
-.login-brand-heading {
-  font-size: 34px;
-  font-weight: 800;
-  line-height: 1.25;
-  margin: 0 0 14px;
-}
-
-.login-brand-heading span {
-  color: #d4af37;
-}
-
-.login-brand-tagline {
-  font-size: 16px;
-  color: #d6e6dd;
-  margin-bottom: 28px;
-}
-
-.login-brand-features {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.login-brand-features li {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 15px;
-  color: #eef5f1;
-}
-
-.check-icon {
-  width: 22px;
-  height: 22px;
-  flex-shrink: 0;
-  border-radius: 50%;
-  background: #d4af37;
-  color: #154734;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 13px;
-}
-
-/* ===== RIGHT: Form panel ===== */
-.login-form-panel {
-  flex: 1;
-  background: linear-gradient(160deg, #1c5a41 0%, #0d2f22 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 32px;
-}
-
-.login-card {
-  width: 100%;
-  max-width: 420px;
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(6px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-top: 3px solid #d4af37;
-  border-radius: 16px;
-  padding: 40px 36px;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
-}
-
-.login-card-title {
-  font-size: 26px;
-  font-weight: 800;
-  margin: 0 0 6px;
-  color: #fff;
-  text-align: center;
-}
-
-.login-sub {
-  font-size: 14px;
-  color: #b9d0c4;
-  margin-bottom: 28px;
-  text-align: center;
-}
-
-.login-form {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-
-.field label {
-  display: block;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.6px;
-  color: #cfe3da;
-  margin-bottom: 6px;
-}
-
-.field-label-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.forgot-link {
-  font-size: 12px;
-  font-weight: 600;
-  color: #d4af37;
-  text-decoration: none;
-}
-
-.forgot-link:hover {
-  text-decoration: underline;
-}
-
-/* ===== Input with icon (flexbox layout) ===== */
-.input-with-icon {
-  position: relative;
-  display: flex;
-  align-items: center;
-  background: #fff;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.input-with-icon:focus-within {
-  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.4);
-}
-
-.input-icon-box {
-  flex-shrink: 0;
-  width: 34px;
-  height: 34px;
-  margin-left: 6px;
-  background: #154734;
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.input-with-icon input {
-  flex: 1;
-  min-width: 0;
-  border: none;
-  outline: none;
-  background: transparent;
-  padding: 12px 40px 12px 10px;
-  font-size: 14px;
-  color: #1a1a1a;
-}
-
-.input-with-icon input::placeholder {
-  color: #9ca3af;
-}
-
-.toggle-password {
-  position: absolute;
-  right: 10px;
-  background: none;
-  border: none;
-  color: #6b7280;
-  cursor: pointer;
-  display: flex;
-  padding: 4px;
-}
-
-.login-btn {
-  margin-top: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #d4af37;
-  color: #1a1a1a;
-  border: none;
-  padding: 13px;
-  border-radius: 8px;
-  font-weight: 700;
-  font-size: 15px;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-
-.login-btn:hover:not(:disabled) {
-  background: #c49d2c;
-}
-
-.login-btn:disabled {
-  opacity: 0.7;
-  cursor: not-allowed;
-}
-
-.login-secure-note {
-  text-align: center;
-  font-size: 12px;
-  color: #a9c2b7;
-  margin-top: 20px;
-}
-
-/* ===== Footer (nje ya kadi) ===== */
-.login-footer {
-  position: relative;
-  z-index: 1;
-  margin-top: 20px;
-  font-size: 12px;
-  color: #8a8a80;
-  text-align: center;
-}
-
-/* ===== Responsive ===== */
-@media (max-width: 900px) {
-  .login-content {
+  /* ===== Screen wrapper ===== */
+  .login-screen {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
-    min-height: auto;
+    padding: clamp(16px, 4vw, 40px) clamp(12px, 3vw, 24px);
+    background:
+      radial-gradient(circle at 15% 10%, rgba(15, 81, 50, 0.55) 0%, transparent 55%),
+      var(--green-dark);
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    color: var(--ivory);
+    overflow-x: hidden;
   }
+
+  /* ===== Canvas ya mandharinyuma ===== */
+  .login-bg-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* ===== Kadi kuu (brand + form) ===== */
+  .login-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 960px;
+    min-height: 560px;
+    display: flex;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5);
+  }
+
+  /* ===== LEFT: Brand panel ===== */
   .login-brand-panel {
-    min-height: 220px;
-    padding: 24px;
+    flex: 1;
+    position: relative;
+    background: linear-gradient(160deg, var(--green) 0%, var(--green-dark) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: clamp(24px, 4vw, 40px) clamp(24px, 5vw, 48px);
+    color: var(--ivory);
+    overflow: hidden;
   }
+
+  .login-brand-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(6, 37, 26, 0.35) 0%, rgba(6, 37, 26, 0.55) 100%);
+  }
+
+  .login-brand-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 24px;
+    min-height: 100%;
+    padding: 8px 0 24px;
+  }
+
+  .login-brand-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .login-logo {
+    width: clamp(48px, 9vw, 72px);
+    height: auto;
+    flex-shrink: 0;
+    object-fit: contain;
+    border-radius: 50%;
+  }
+
+  .login-uni-name {
+    font-size: clamp(12px, 1.6vw, 14px);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: var(--ivory);
+  }
+
+  .login-brand-bottom {
+    margin-top: auto;
+    max-width: 460px;
+  }
+
   .login-brand-heading {
-    font-size: 24px;
+    font-size: clamp(24px, 4vw, 34px);
+    font-weight: 800;
+    line-height: 1.25;
+    margin: 0 0 14px;
+    color: var(--ivory);
   }
+
+  .login-brand-heading span {
+    color: var(--gold);
+  }
+
+  .login-brand-tagline {
+    font-size: clamp(14px, 1.8vw, 16px);
+    color: var(--ivory-soft);
+    margin: 0 0 28px;
+  }
+
+  .login-brand-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .login-brand-features li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: clamp(13px, 1.6vw, 15px);
+    color: var(--ivory);
+  }
+
+  .check-icon {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: rgba(244, 241, 230, 0.12);
+    border: 1px solid rgba(244, 241, 230, 0.35);
+    color: var(--ivory);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 12px;
+  }
+
+  /* ===== RIGHT: Form panel ===== */
   .login-form-panel {
-    padding: 20px;
+    flex: 1;
+    background: var(--green-dark);
+    border-left: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(16px, 3vw, 32px);
   }
-}
+
+  .login-card {
+    width: 100%;
+    max-width: 420px;
+    background: rgba(244, 241, 230, 0.05);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: clamp(24px, 4vw, 40px) clamp(20px, 4vw, 36px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+  }
+
+  .login-card-title {
+    font-size: clamp(22px, 3vw, 26px);
+    font-weight: 800;
+    margin: 0 0 6px;
+    color: var(--ivory);
+    text-align: center;
+  }
+
+  .login-sub {
+    font-size: 14px;
+    color: var(--ivory-soft);
+    margin: 0 0 28px;
+    text-align: center;
+  }
+
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .field label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    color: var(--ivory-soft);
+    margin-bottom: 6px;
+  }
+
+  .field-label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* ===== Input with icon ===== */
+  .input-with-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: var(--ivory);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: box-shadow 0.2s ease;
+  }
+
+  .input-with-icon:focus-within {
+    box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.45);
+  }
+
+  .input-icon-box {
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    margin-left: 6px;
+    background: var(--green);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .input-with-icon input {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 12px 44px 12px 10px;
+    /* 16px huzuia iPhone kuzoom ukigusa input */
+    font-size: 16px;
+    color: #1a1a1a;
+  }
+
+  .input-with-icon input::placeholder {
+    color: #8a948e;
+    font-size: 14px;
+  }
+
+  .toggle-password {
+    position: absolute;
+    right: 6px;
+    min-width: 36px;
+    min-height: 36px;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    color: #6b7a72;
+    cursor: pointer;
+    display: flex;
+    padding: 4px;
+  }
+
+  /* ===== Kitufe (dhahabu) ===== */
+  .login-btn {
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gold);
+    color: var(--green-dark);
+    border: none;
+    padding: 14px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
+  }
+
+  .login-btn:hover:not(:disabled) {
+    background: var(--gold-hover);
+  }
+
+  .login-btn:active:not(:disabled) {
+    transform: translateY(1px);
+  }
+
+  .login-btn:focus-visible {
+    outline: 3px solid rgba(201, 162, 39, 0.5);
+    outline-offset: 2px;
+  }
+
+  .login-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  .login-secure-note {
+    text-align: center;
+    font-size: 12px;
+    color: var(--ivory-soft);
+    margin: 20px 0 0;
+  }
+
+  /* ===== Footer (nje ya kadi) ===== */
+  .login-footer {
+    position: relative;
+    z-index: 1;
+    margin: 20px 0 0;
+    padding: 0 8px;
+    font-size: 12px;
+    color: rgba(244, 241, 230, 0.6);
+    text-align: center;
+  }
+
+  /* ===== Responsive: tablet na simu kubwa ===== */
+  @media (max-width: 900px) {
+    .login-content {
+      flex-direction: column;
+      min-height: auto;
+      max-width: 520px;
+    }
+    .login-brand-panel {
+      min-height: 0;
+      padding: 24px;
+    }
+    .login-brand-content {
+      padding: 0;
+      gap: 20px;
+    }
+    .login-brand-tagline {
+      margin-bottom: 18px;
+    }
+    .login-form-panel {
+      padding: 20px;
+      border-left: none;
+      border-top: 1px solid var(--line);
+    }
+  }
+
+  /* ===== Responsive: simu ===== */
+  @media (max-width: 600px) {
+    .login-screen {
+      justify-content: flex-start;
+      padding: 16px 12px 24px;
+    }
+    .login-content {
+      border-radius: 16px;
+    }
+    .login-brand-panel {
+      padding: 20px;
+    }
+    .login-brand-features {
+      display: none;
+    }
+    .login-brand-tagline {
+      margin-bottom: 0;
+    }
+    .login-card {
+      padding: 24px 18px;
+      border-radius: 14px;
+    }
+    .login-sub {
+      margin-bottom: 22px;
+    }
+    .login-footer {
+      font-size: 11px;
+    }
+  }
+
+  /* ===== Responsive: simu ndogo sana ===== */
+  @media (max-width: 360px) {
+    .login-brand-header {
+      gap: 8px;
+    }
+    .login-uni-name {
+      font-size: 11px;
+      letter-spacing: 0.2px;
+    }
+    .login-form-panel {
+      padding: 12px;
+    }
+    .login-card {
+      padding: 20px 14px;
+    }
+  }
+
+  /* ===== Responsive: simu ikiwa imelala (urefu mfupi) ===== */
+  @media (max-height: 520px) and (max-width: 900px) {
+    .login-screen {
+      justify-content: flex-start;
+    }
+    .login-brand-features {
+      display: none;
+    }
+  }
